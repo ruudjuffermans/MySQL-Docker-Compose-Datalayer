@@ -6,14 +6,14 @@ services:
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "8033:3306"
     restart: always
     volumes:
-      - ./data:/var/lib/mysql
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/shared:/usr/local/shared
+      - ./mysql/config/my.cnf:/etc/mysql/conf.d/custom.cnf
+      # - ./mysql/log:/var/log/mysql
     networks:
       - data-layer
 
