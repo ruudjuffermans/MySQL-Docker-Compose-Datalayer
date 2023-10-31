@@ -6,8 +6,10 @@ services:
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    expose:
+      - "3307"
     ports:
-      - "8033:3306"
+      - "3307:3307"
     restart: always
     volumes:
       - ./mysql/data:/var/lib/mysql
@@ -39,7 +41,7 @@ services:
       - mysql
     environment:
       PMA_HOST: mysql
-      PMA_PORT: 3306
+      PMA_PORT: 3307
       PMA_ARBITRARY: 1
     restart: always
     ports:
