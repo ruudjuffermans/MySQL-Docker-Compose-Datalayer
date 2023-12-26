@@ -9,14 +9,13 @@ services:
       - "3307:3307"
     volumes:
       - ./mysql/shared:/usr/local/shared
-      - ./mysql/config/my.cnf:/etc/mysql/conf.d/custom.cnf
       - db:/var/lib/mysql
     networks:
       - backend
   myadmin:
-    image: phpmyadmin/phpmyadminsss
+    image: phpmyadmin/phpmyadmin
     depends_on:
-      mysql:
+      - mysql
     environment:
       PMA_HOST: mysql
       PMA_PORT: 3307
